@@ -66,5 +66,8 @@ Here are some directions.
 
  chmod +x zed.py
  sudo cp zed.py /usr/games/zed
+ 
+ I put the file in the games directory because trying to edit a file with an
+ editor like this is sort of like a text adventure game.
 ```
  Enjoy!
