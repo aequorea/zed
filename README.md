@@ -12,3 +12,7 @@ Truth be told, the IRIS text editor is a lot like a minimal version of TECO, in 
 Maybe that's enough of a sales pitch. The commands are listed in the comments at the start of the python file zed.py.
 
 Enjoy!
+
+P.S. I've decided to include a PDF showing the commands for the original IRIS text editor. zed is not an exact clone. That's why I say it's inspired by the IRIS editor. The commands have the same names but the behavior may be slightly different. Searching with regular expressions is probably the main example of different behavior but there are other subtle differences that you will need to explore to find out exactly what they are.
+
+And BTW, if you want to learn Python the hard way... Start by writing a text editor in Python that is character oriented and has no GUI. Then use it to do the exercises. Cheers!
