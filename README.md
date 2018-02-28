@@ -68,6 +68,6 @@ Here are some directions.
  I put the file in the games directory because trying to edit a file with an
  editor like this is sort of like a text adventure game.
 ```
-I'm not sure if it was an accident that the editor got the same name as the person responsible for the Learning Python the Hard Way series or not. But I was thinking if you really want to learn Python the hard way, you might try using an editor like this. Yeah, put zed to work for you.
+I'm not sure if it was an accident that the editor got the same name as the person responsible for the Learning Python the Hard Way series or not. But I was thinking if you really want to learn Python the hard way, you might try using an editor like this.
 
 Enjoy!
