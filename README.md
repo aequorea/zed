@@ -15,7 +15,7 @@ Here are some directions.
  --------
 
  nCs1/s2/    change first n occurences of s1 to s2 - position at start of
-             buffer - if n <= 0 change all
+             buffer - if n <= 0 change all (TECO uses FS or FN for this)
 
  nD          delete n characters from current position
 
@@ -35,7 +35,7 @@ Here are some directions.
 
  nL          move n lines from current position
 
- nM          move n characters from current position
+ nM          move n characters from current position (TECO uses C for this)
 
  nRcommands  repeats commands n times - multi-line inserts must be separated
              with control-N characters - if you don't use the separator
@@ -49,7 +49,7 @@ Here are some directions.
  Z           jump to end of buffer
 
 
- XEND        exit -- write file
+ XEND        exit -- write file (TECO uses EX for this)
  XKIL        exit -- abandon edits
  control-C   exit -- abandon edits
 
