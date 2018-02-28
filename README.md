@@ -27,7 +27,7 @@ Here are some directions.
 
  Istr/       insert str at the current position - may be multi-line -
              you can use control-N as a line separator instead of enter
-             for multi-line inserts
+             for multi-line inserts (IRIS uses control-Z for the separator)
 
  nJ          move to nth line of buffer
 
