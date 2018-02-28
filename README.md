@@ -1,9 +1,7 @@
 # zed
-Recently an ancient operating system from the 1970s that I used to use quite a bit was brought back to life using the simh machine emulator. This really impressed me. The operating system is called IRIS and it ran on Data General Nova computers. These computers had a very small amount of memory so the tools were kept simple by necessity. I had used the text editor from that operating system for quite some time, so I decided to use that editor as my model for zed.
+Recently an ancient operating system from the 1970s that I used to use quite a bit was brought back to life using the simh machine emulator. The operating system is called IRIS and it ran on Data General Nova computers. These computers had a very small amount of memory so the tools were simple by necessity. Back in the day, I spent many hours using a very simple text editor on this system, and running it again on the emulator reminded me of some of these happy times. I thought it would be fun to be able to use an editor like that again, except on a more modern computer. Python made this easy.
 
-The IRIS text editor is a lot like a minimal version of TECO, in fact, the commands are quite similar. I've included a PDF showing the commands for the original IRIS text editor. We have not implemented all of the features of the original IRIS editor. In particular, we have not implemented any commands related to paging the text file. These days we have lots of memory and so we read the whole file in at once. This greatly simplifies things.
-
-Aside from the fact that zed supports a subset of the original functionality of the IRIS text editor, the behavior of the supported commands may be slightly different from the original IRIS editor. Searching with regular expressions is one example of different behavior but there are others. For example the K, L, and T commands behave more like TECO than the IRIS editor. This is intentional. This way you can upgrade to TECO without being confused by these minor details.
+I've included a PDF showing the commands for the original IRIS text editor. I didn't implement all of the features; in particular there are no commands related to paging the text file. These days we have lots of memory and so we read the whole file in at once. This greatly simplifies things. There are also some minor differences in how the K, L, and T commands work, but this is not a big deal. They ended up working like they do in TECO. Oh well. Before IRIS, I also used TECO quite a bit. You can also search with python flavored regular expressions. We didn't have anything like that on IRIS, but I couldn't resist putting it in. Python made that easy too. 
 
 Here are some directions.
 
@@ -17,19 +15,18 @@ Here are some directions.
  --------
 
  nCs1/s2/    change first n occurences of s1 to s2 - position at start of
-             buffer - if n <= 0 change all (TECO uses FS or FN for this)
+             buffer - if n <= 0 change all
 
  nD          delete n characters from current position
 
  Ffile/      insert contents of file at current position - position at end of
              file
 
- H<char>     change input terminator to <char> - you can use escape to be a
-             little bit like TECO
+ H<char>     change input terminator to <char>
 
  Istr/       insert str at the current position - may be multi-line -
              you can use control-N as a line separator instead of enter
-             for multi-line inserts (IRIS uses control-Z for the separator)
+             for multi-line inserts
 
  nJ          move to nth line of buffer
 
@@ -37,7 +34,7 @@ Here are some directions.
 
  nL          move n lines from current position
 
- nM          move n characters from current position (TECO uses C for this)
+ nM          move n characters from current position
 
  nRcommands  repeats commands n times - multi-line inserts must be separated
              with control-N characters - if you don't use the separator
@@ -46,12 +43,12 @@ Here are some directions.
  nSstr/      search for str n times - position after match -
              you can use python flavored regular expressions
 
- nT          type n lines - 0TT types current line (like TECO)
+ nT          type n lines - 0TT types current line
 
  Z           jump to end of buffer
 
 
- XEND        exit -- write file (TECO uses EX for this)
+ XEND        exit -- write file
  XKIL        exit -- abandon edits
  control-C   exit -- abandon edits
 
@@ -60,8 +57,7 @@ Here are some directions.
  means -1.
 
  The delimiter for inserts is the forward slash, just like IRIS. You can
- change this with the H command. If you want you can make it the escape key.
- Then it's more like TECO.
+ change this with the H command.
 
  How to Install
  --------------
