@@ -10,6 +10,7 @@
 #               stop executing the current command string on any error
 # 2018-02-28 -- (1.02) update command descriptions
 #               fix repeat when n <= 0
+# 2018-02-28 -- (1.03) consistently
 
 """
 
@@ -64,7 +65,7 @@
  The number may be positive, negative or zero. A minus sign with no number
  means -1.
 
- K, T, and L commands use the number n consistent with one another --
+ K, T, and L commands use the number n consistently with one another --
 
      If n < 0, K deletes from the beginning of the nth line previous to the
      current position, T types from the beginning of the nth line previous to
