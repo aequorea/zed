@@ -5,7 +5,6 @@ I've included a PDF showing the commands for the original IRIS text editor. I di
 
 Here are some directions.
 ```
- 
  Usage
  -----
 
