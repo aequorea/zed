@@ -8,6 +8,8 @@
 # 2018-02-27 -- first version
 # 2018-02-28 -- (1.01) give an error if bogus command
 #               stop executing the current command string on any error
+# 2018-02-28 -- (1.02) update command descriptions
+#               fix repeat when n <= 0
 
 """
 
@@ -27,29 +29,29 @@
  Ffile/      insert contents of file at current position - position at end of
              file
 
- H<char>     change input terminator to <char> - you can use escape to be a
-             little bit like TECO
+ H<char>     change string terminator from / to <char>
 
  Istr/       insert str at the current position - may be multi-line -
              you can use control-N as a line separator instead of enter
              for multi-line inserts
 
- nJ          move to nth line of buffer
+ nJ          move to nth line of buffer - if n <= 0 go to beginning of buffer
 
- nK          delete n lines from current position
+ nK          delete n lines from current position (see below)
 
- nL          move n lines from current position
+ nL          move n lines from current position (see below)
 
  nM          move n characters from current position
 
  nRcommands  repeats commands n times - multi-line inserts must be separated
-             with control-N characters - if you don't use the separator
-             you don't get an error - just weird results
+             with control-N characters - if you don't use control-N you don't
+             get an error - just weird results - if n <= 0 do it once
 
  nSstr/      search for str n times - position after match -
              you can use python flavored regular expressions
+             if n <= 0 search once - there are no backwards searches
 
- nT          type n lines
+ nT          type n lines (see below)
 
  Z           jump to end of buffer
 
@@ -62,9 +64,20 @@
  The number may be positive, negative or zero. A minus sign with no number
  means -1.
 
- The delimiter for inserts is the forward slash, just like IRIS. You can
- change this with the H command. If you want you can make it the escape key.
- Then it's more like TECO.
+ K, T, and L commands use the number n consistent with one another --
+
+     If n < 0, K deletes from the beginning of the nth line previous to the
+     current position, T types from the beginning of the nth line previous to
+     the current position, and L moves to the beginning of the nth line
+     previous.
+
+     If n = 0, K deletes from the beginning of the current line to the current
+     position, T types from the beginning of the current line to the current
+     position, and L moves to the beginning of the current line.
+
+     If n > 0, K deletes from the current position to the beginning of the nth
+     line forward, T types from the current position to the beginning of the
+     nth line forward and and L moves to the beginning of nth line forward.
 
  How to Install
  --------------
@@ -323,6 +336,8 @@ def do_repeat(n, cp, buf, p):
         sbuf += s[cp]
         cp += 1
     big_s = []
+    if n <= 0:
+        n = 1
     while n:
         n -= 1
         big_s += sbuf
