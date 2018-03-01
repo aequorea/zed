@@ -2,74 +2,79 @@
 #
 # zed.py -- an oldskool text editor
 #           inspired by the IRIS text editor
-#           which seems to have been inspired by TECO
 #
 # by John Saeger
 #
-# 2018-02-27 - first version
-#
-# Usage
-# -----
-#
-# zed file
-#
-# Commands
-# --------
-#
-# nCs1/s2/    change first n occurences of s1 to s2 - position at start of
-#             buffer - if n <= 0 change all
-#
-# nD          delete n characters from current position
-#
-# Ffile/      insert contents of file at current position - position at end of
-#             file
-#
-# H<char>     change input terminator to <char> - you can use escape to be a
-#             little bit like TECO
-#
-# Istr/       insert str at the current position - may be multi-line -
-#             you can use control-N as a line separator instead of enter
-#             for multi-line inserts
-#
-# nJ          move to nth line of buffer
-#
-# nK          delete n lines from current position
-#
-# nL          move n lines from current position
-#
-# nM          move n characters from current position
-#
-# nRcommands  repeats commands n times - multi-line inserts must be separated
-#             with control-N characters - if you don't use the separator
-#             you don't get an error - just weird results
-#
-# nSstr/      search for str n times - position after match -
-#             you can use python flavored regular expressions
-#
-# nT          type n lines
-#
-# Z           jump to end of buffer
-#
-#
-# XEND        exit -- write file
-# XKIL        exit -- abandon edits
-# control-C   exit -- abandon edits
-#
-# Commands may be in lower case. A number n is optional and defaults to one.
-# The number may be positive, negative or zero. A minus sign with no number
-# means -1.
-#
-# The delimiter for inserts is the forward slash, just like IRIS. You can
-# change this with the H command. If you want you can make it the escape key.
-# Then it's more like TECO.
-#
-# How to Install
-# --------------
-#
-# chmod +x zed.py
-# sudo cp zed.py /usr/games/zed
-#
-# Enjoy!
+# 2018-02-27 -- first version
+# 2018-02-28 -- (1.01) give an error if bogus command
+#               stop executing the current command string on any error
+
+"""
+
+ Usage
+ -----
+
+ zed file
+
+ Commands
+ --------
+
+ nCs1/s2/    change first n occurences of s1 to s2 - position at start of
+             buffer - if n <= 0 change all
+
+ nD          delete n characters from current position
+
+ Ffile/      insert contents of file at current position - position at end of
+             file
+
+ H<char>     change input terminator to <char> - you can use escape to be a
+             little bit like TECO
+
+ Istr/       insert str at the current position - may be multi-line -
+             you can use control-N as a line separator instead of enter
+             for multi-line inserts
+
+ nJ          move to nth line of buffer
+
+ nK          delete n lines from current position
+
+ nL          move n lines from current position
+
+ nM          move n characters from current position
+
+ nRcommands  repeats commands n times - multi-line inserts must be separated
+             with control-N characters - if you don't use the separator
+             you don't get an error - just weird results
+
+ nSstr/      search for str n times - position after match -
+             you can use python flavored regular expressions
+
+ nT          type n lines
+
+ Z           jump to end of buffer
+
+
+ XEND        exit -- write file
+ XKIL        exit -- abandon edits
+ control-C   exit -- abandon edits
+
+ Commands may be in lower case. A number n is optional and defaults to one.
+ The number may be positive, negative or zero. A minus sign with no number
+ means -1.
+
+ The delimiter for inserts is the forward slash, just like IRIS. You can
+ change this with the H command. If you want you can make it the escape key.
+ Then it's more like TECO.
+
+ How to Install
+ --------------
+
+ chmod +x zed.py
+ sudo cp zed.py /usr/games/zed
+
+ Enjoy!
+
+"""
 
 import sys
 import re
@@ -250,15 +255,25 @@ def do_search(n, s, cp, buf, p):
     searchbuf, s, cp = get_short_string(s, cp)
     if not searchbuf:
         print('? search')
+        cp = len(s)     # terminate this command string
         return cp, p
     if n <= 0:
         n = 1
     while n:
-        match = re.search(searchbuf, editbuf[p:])
+        try:
+            match = re.search(searchbuf, editbuf[p:])
+        except Exception:
+            print('? regex')
+            cp = len(s)     # terminate this command string
+            return cp, p
+
         if match:
             p += match.end()
         else:
             print('? no match')
+            cp = len(s)     # terminate this command string
+            return cp, p
+
         n -= 1
     return cp, p
 
@@ -269,10 +284,12 @@ def do_change(n, s, cp, p):
     searchbuf, s, cp = get_short_string(s, cp)
     if not searchbuf:
         print('? change')
+        cp = len(s)     # terminate this command string
         return cp, p
     changebuf, s, cp = get_short_string(s, cp)
     if not changebuf:
         print('? change')
+        cp = len(s)     # terminate this command string
         return cp, p
     if n <= 0:
         neweditbuf = editbuf.replace(searchbuf, changebuf)
@@ -295,6 +312,7 @@ def do_file(s, cp, buf, p):
         f.close()
     except Exception:
         print('? file')
+        cp = len(s)     # terminate this command string
     return cp, p
 
 
@@ -325,6 +343,8 @@ def do_commands(s, cp, buf, p):
     regex = r"(-?\d{0,10})(\w)"
     match = re.search(regex, s[cp:].lower())
     if not match:
+        print("? command")
+        cp = len(s)     # terminate this command string
         return 1, cp, p
     if match.group(1):
         if match.group(1) == '-':
@@ -338,32 +358,35 @@ def do_commands(s, cp, buf, p):
 
     if cmd == 't':
         do_type(n, buf, p)
-    if cmd == 'j':
+    elif cmd == 'j':
         p = do_jump(n, buf, p)
-    if cmd == 'l':
+    elif cmd == 'l':
         p = do_line(n, buf, p)
-    if cmd == 'k':
+    elif cmd == 'k':
         p = do_kill(n, buf, p)
-    if cmd == 'm':
+    elif cmd == 'm':
         p = do_move(n, buf, p)
-    if cmd == 'd':
+    elif cmd == 'd':
         p = do_del(n, buf, p)
-    if cmd == 'c':
+    elif cmd == 'c':
         cp, p = do_change(n, s, cp, p)
-    if cmd == 'r':
+    elif cmd == 'r':
         cp, p = do_repeat(n, cp, buf, p)
-    if cmd == 's':
+    elif cmd == 's':
         cp, p = do_search(n, s, cp, buf, p)
 
-    if cmd == 'f':
+    elif cmd == 'f':
         cp, p = do_file(s, cp, buf, p)
-    if cmd == 'i':
+    elif cmd == 'i':
         cp, p = do_input(cp, buf, p)
-    if cmd == 'z':
+    elif cmd == 'z':
         p = len(buf)
-    if cmd == 'h':
+    elif cmd == 'h':
         terminator = s[cp]
         cp += 1
+    else:
+        print('? command')
+        cp = len(s)     # terminate this command string
 
     return 1, cp, p
 
