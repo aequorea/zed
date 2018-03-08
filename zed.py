@@ -12,6 +12,7 @@
 #               fix repeat when n <= 0
 # 2018-02-28 -- (1.03) consistently
 # 2018-03-01 -- (1.04) modify change to use regular expressions
+# 2018-03-07 -- (1.05) error if no file specified
 
 """
 
@@ -415,8 +416,11 @@ def do_commands(s, cp, buf, p):
 
 # read the input file (if it exists) and we're off to the races
 
-
-readfile(sys.argv[1], buf, p)
+try:
+    readfile(sys.argv[1], buf, p)
+except Exception:
+    print('? file')
+    exit()
 
 REPL = True
 while REPL:
