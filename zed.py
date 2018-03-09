@@ -13,6 +13,7 @@
 # 2018-02-28 -- (1.03) consistently
 # 2018-03-01 -- (1.04) modify change to use regular expressions
 # 2018-03-07 -- (1.05) error if no file specified
+# 2018-03-08 -- (1.06) fix bug in change function
 
 """
 
@@ -317,7 +318,7 @@ def do_change(n, s, cp, p):
         cp = len(s)     # terminate this command string
         return cp, p
 
-    buf = []
+    buf = buf[0:p]
     for ch in neweditbuf:
         buf.append(ch)
     p = 0
