@@ -77,5 +77,10 @@ Here are some directions.
 
  chmod +x zed.py
  sudo cp zed.py /usr/games/zed
+ 
+ Compatibility
+ -------------
+ 
+ It has been tested on linux. So it might work on a mac, but probably not on windows.
 ```
 Enjoy!
