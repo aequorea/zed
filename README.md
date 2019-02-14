@@ -1,4 +1,5 @@
-## zed -- an oldskool text editor
+## zed
+An oldskool text editor.
 <p align="center">
   <img src="Televideo925Terminal.jpg" width="500"/>
 </p>
