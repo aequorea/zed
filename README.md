@@ -1,4 +1,9 @@
 # zed
+
+<p align="center">
+  <img src="adm3.jpg" width="500"/>
+</p>
+
 Recently an ancient operating system from the 1970s that I used to use quite a bit was brought back to life using the simh machine emulator. The operating system is called IRIS and it ran on Data General Nova computers. These computers had a very small amount of memory so the tools were simple by necessity. Back in the day, I spent many hours using a very simple text editor on this system, and running it again on the emulator reminded me of some of those happy times. I thought it would be fun to be able to use an editor like that again, except on a more modern computer. Python made this easy.
 
 I've included a PDF showing the commands for the original IRIS text editor. I didn't implement all of the features. For example there are no commands related to paging the text file. These days we have lots of memory so we read the whole file in at once. There are other minor differences including the ability to search with regular expressions.
