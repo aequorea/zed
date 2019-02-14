@@ -91,6 +91,4 @@ Here are some directions.
      It has been tested on linux. It might work on a mac, but probably not on windows.
      It might work in the windows linux subsystem.
 
-Image Credit
-<br/><br/>
-By ArnoldReinhold - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=31105488
+Image credit for teletype: By ArnoldReinhold - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=31105488
