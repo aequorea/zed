@@ -90,5 +90,3 @@ Here are some directions.
  
      It has been tested on linux. It might work on a mac, but probably not on windows.
      It might work in the windows linux subsystem.
-
-Enjoy!
