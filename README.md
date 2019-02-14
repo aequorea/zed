@@ -5,7 +5,7 @@ An oldskool text editor.
 </p>
 Recently an ancient operating system from the 1970s that I used quite a bit was brought back to life using the simh machine emulator. The operating system is called IRIS and it ran on Data General Nova computers. These computers had a very small amount of memory so the tools were simple by necessity. Back in the day, I spent many hours using a very simple text editor on this system, and running it again on the emulator reminded me of some of those happy times. I thought it would be fun to be able to use an editor like that again, except on a more modern computer. Python made this easy.
 <br/><br/>
-I've included a PDF showing the commands for the original IRIS text editor. I didn't implement all of the features. For example there are no commands related to paging the text file. These days we have lots of memory so we read the whole file in at once. There are other minor differences including the ability to search with regular expressions and some of the commands work a little bit differently than the IRIS editor. Before the IRIS editor I used teco, and although the IRIS editor was clearly inspired by teco, some things were changed. Well, in zed I changed them back. So this is my platonic vision of how the IRIS editor should have been, and it's sort of a minimal subset of a character oriented text editor that is actually useful. Conspicuously absent is any kind of undo command. Trust me, that's part of the fun!
+I've included a PDF showing the commands for the original IRIS text editor. I didn't implement all of the features. For example there are no commands related to paging the text file. These days we have lots of memory so we read the whole file in at once. There are other minor differences including the ability to search with regular expressions and some of the commands work a little bit differently than the IRIS editor. Before the IRIS editor I used teco, and although the IRIS editor was clearly inspired by teco, some things were changed. Well, in zed I changed them back. So this is my platonic vision of how the IRIS editor should have been, and it's sort of a minimal subset of a character oriented text editor that is actually useful. Conspicuously absent is any kind of undo command. Trust me, that's part of the fun. And yes, this is the kind of editor one likely would have used when accessing a timeshared computer with a teletype as shown in the picture, although teco was considerably more powerful.
 <br/><br/>
 Enjoy!
 <br/><br/>
@@ -92,5 +92,5 @@ Here are some directions.
      It might work in the windows linux subsystem.
 
 Image Credit
-<br/>
+<br/><br/>
 By ArnoldReinhold - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=31105488
