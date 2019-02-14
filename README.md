@@ -8,83 +8,83 @@ I've included a PDF showing the commands for the original IRIS text editor. I di
 <br/><br/>
 Here are some directions.
 <br/><br/>
-```
- Usage
- -----
 
- zed file
+     Usage
+     -----
 
- Commands
- --------
+     zed file
 
- nCs1/s2/    change first n occurences of s1 to s2 after current position -
-             position doesn't change - you can use python flavored regular
-             expressions - if n <= 0 change all after current position
+     Commands
+     --------
 
- nD          delete n characters from current position
+     nCs1/s2/    change first n occurences of s1 to s2 after current position -
+                 position doesn't change - you can use python flavored regular
+                 expressions - if n <= 0 change all after current position
 
- Ffile/      insert contents of file at current position - position at end of
-             file
+     nD          delete n characters from current position
 
- H<char>     change string terminator from / to <char>
+     Ffile/      insert contents of file at current position - position at end of
+                 file
 
- Istr/       insert str at the current position - may be multi-line -
-             you can use control-N as a line separator instead of enter
-             for multi-line inserts
+     H<char>     change string terminator from / to <char>
 
- nJ          move to nth line of buffer - if n <= 0 go to beginning of buffer
+     Istr/       insert str at the current position - may be multi-line -
+                 you can use control-N as a line separator instead of enter
+                 for multi-line inserts
 
- nK          delete n lines from current position (see below)
+     nJ          move to nth line of buffer - if n <= 0 go to beginning of buffer
 
- nL          move n lines from current position (see below)
+     nK          delete n lines from current position (see below)
 
- nM          move n characters from current position
+     nL          move n lines from current position (see below)
 
- nRcommands  repeats commands n times - multi-line inserts must be separated
-             with control-N characters - if you don't use control-N you don't
-             get an error - just weird results - if n <= 0 do it once
+     nM          move n characters from current position
 
- nSstr/      search for str n times after current position - new position after
-             match - you can use python flavored regular expressions -
-             if n <= 0 search once - there are no backwards searches
+     nRcommands  repeats commands n times - multi-line inserts must be separated
+                 with control-N characters - if you don't use control-N you don't
+                 get an error - just weird results - if n <= 0 do it once
 
- nT          type n lines (see below)
+     nSstr/      search for str n times after current position - new position after
+                 match - you can use python flavored regular expressions -
+                 if n <= 0 search once - there are no backwards searches
 
- Z           jump to end of buffer
+     nT          type n lines (see below)
+
+     Z           jump to end of buffer
 
 
- XEND        exit -- write file
- XKIL        exit -- abandon edits
- control-C   exit -- abandon edits
+     XEND        exit -- write file
+     XKIL        exit -- abandon edits
+     control-C   exit -- abandon edits
 
- Commands may be in lower case. A number n is optional and defaults to one.
- The number may be positive, negative or zero. A minus sign with no number
- means -1.
+     Commands may be in lower case. A number n is optional and defaults to one.
+     The number may be positive, negative or zero. A minus sign with no number
+     means -1.
 
- K, T, and L commands use the number n consistently with one another --
+     K, T, and L commands use the number n consistently with one another --
 
-     If n < 0, K deletes from the beginning of the nth line previous to the
-     current position, T types from the beginning of the nth line previous to
-     the current position, and L moves to the beginning of the nth line
-     previous.
+         If n < 0, K deletes from the beginning of the nth line previous to the
+         current position, T types from the beginning of the nth line previous to
+         the current position, and L moves to the beginning of the nth line
+         previous.
 
-     If n = 0, K deletes from the beginning of the current line to the current
-     position, T types from the beginning of the current line to the current
-     position, and L moves to the beginning of the current line.
+         If n = 0, K deletes from the beginning of the current line to the current
+         position, T types from the beginning of the current line to the current
+         position, and L moves to the beginning of the current line.
 
-     If n > 0, K deletes from the current position to the beginning of the nth
-     line forward, T types from the current position to the beginning of the
-     nth line forward and and L moves to the beginning of nth line forward.
+         If n > 0, K deletes from the current position to the beginning of the nth
+         line forward, T types from the current position to the beginning of the
+         nth line forward and and L moves to the beginning of nth line forward.
 
- How to Install
- --------------
+     How to Install
+     --------------
 
- chmod +x zed.py
- sudo cp zed.py /usr/games/zed
+     chmod +x zed.py
+     sudo cp zed.py /usr/games/zed
  
- Compatibility
- -------------
+     Compatibility
+     -------------
  
- It has been tested on linux. So it might work on a mac, but probably not on windows.
-```
+     It has been tested on linux. So it might work on a mac, but probably not on windows.
+
 Enjoy!
