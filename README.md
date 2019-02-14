@@ -2,6 +2,8 @@
 
 <p align="center">
   <img src="adm3.jpg" width="500"/>
+</p>
+<p align="center">
 Image courtesy of: https://www.bytecollector.com/lsi.htm
 </p>
 
