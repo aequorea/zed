@@ -7,6 +7,7 @@ Recently an ancient operating system from the 1970s that I used quite a bit was 
 I've included a PDF showing the commands for the original IRIS text editor. I didn't implement all of the features. For example there are no commands related to paging the text file. These days we have lots of memory so we read the whole file in at once. There are other minor differences including the ability to search with regular expressions.
 <br/><br/>
 Here are some directions.
+<br/><br/>
 ```
  Usage
  -----
