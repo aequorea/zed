@@ -1,5 +1,5 @@
-### zed
-####An Oldskool Text editor
+## zed
+#### An Oldskool Text editor
 <p align="center">
   <img src="adm3.jpg" width="500"/>
 </p>
