@@ -86,6 +86,7 @@ Here are some directions.
      Compatibility
      -------------
  
-     It has been tested on linux. So it might work on a mac, but probably not on windows.
+     It has been tested on linux. It might work on a mac, but probably not on windows.
+     It might work in the windows linux subsystem.
 
 Enjoy!
