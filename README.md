@@ -2,8 +2,8 @@
 
 <p align="center">
   <img src="adm3.jpg" width="500"/>
-</p>
 Image courtesy of: https://www.bytecollector.com/lsi.htm
+</p>
 
 Recently an ancient operating system from the 1970s that I used to use quite a bit was brought back to life using the simh machine emulator. The operating system is called IRIS and it ran on Data General Nova computers. These computers had a very small amount of memory so the tools were simple by necessity. Back in the day, I spent many hours using a very simple text editor on this system, and running it again on the emulator reminded me of some of those happy times. I thought it would be fun to be able to use an editor like that again, except on a more modern computer. Python made this easy.
 
